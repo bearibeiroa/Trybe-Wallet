@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import LOGIN from '../actions';
+import { LOGIN } from '../actions';
 
 class Login extends React.Component {
   constructor() {
@@ -10,19 +10,16 @@ class Login extends React.Component {
       email: '',
       password: '',
     };
-    this.handleChange = this.handleChange.bind(this);
-    this.validateButton = this.validateButton.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
   }
 
-  onSubmit() {
+  onSubmit = () => {
     const { email } = this.state;
     const { history, dispatchSetValue } = this.props;
     dispatchSetValue(email);
     history.push('/carteira');
   }
 
-  validateButton() {
+  validateButton = () => {
     const { email, password } = this.state;
     // Solução desenvolvida com auxílio dos alunos Michael Caxias e Luiz Gustavo.
     // Ref: https://stackoverflow.com/questions/940577/javascript-regular-expression-email-validation
@@ -34,7 +31,7 @@ class Login extends React.Component {
     return !checkEmailInput.test(email) || checkPass;
   }
 
-  handleChange({ target }) {
+  handleChange = ({ target }) => {
     const { name, value } = target;
     this.setState({ [name]: value });
   }
