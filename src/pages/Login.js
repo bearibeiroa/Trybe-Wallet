@@ -1,16 +1,67 @@
 import React from 'react';
 
 class Login extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      email: '',
+      password: '',
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.validateButton = this.validateButton.bind(this);
+  }
+
+  handleChange({ target }) {
+    const { name, value } = target;
+    this.setState({ [name]: value });
+  }
+
+  validateButton() {
+    const { email, password } = this.state;
+    // Solução desenvolvida com auxílio dos alunos Michael Caxias e Luiz Gustavo.
+    // Ref: https://stackoverflow.com/questions/940577/javascript-regular-expression-email-validation
+
+    const LENGTH_PASSWORD = 6;
+    const checkEmailInput = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    const checkPass = password.length < LENGTH_PASSWORD;
+
+    return !checkEmailInput.test(email) || checkPass;
+  }
+
   render() {
+    const { email, password } = this.state;
     return (
-      <form>
-        <label htmlFor="login">
-          TrybeWallet
-          <input type="email" name="email" data-testid="email-input" />
-          <input type="text" name="senha" data-testid="password-input" />
-          <button type="button">Entrar</button>
-        </label>
-      </form>
+      <>
+        <h1>TrybeWallet</h1>
+        <form>
+          <label htmlFor="email">
+            Email:
+            <input
+              type="email"
+              name="email"
+              value={ email }
+              data-testid="email-input"
+              onChange={ this.handleChange }
+            />
+            <label htmlFor="password">
+              Senha:
+              <input
+                type="text"
+                name="password"
+                value={ password }
+                onChange={ this.handleChange }
+                data-testid="password-input"
+              />
+            </label>
+            <button
+              type="button"
+              disabled={ this.validateButton() }
+            >
+              Entrar
+            </button>
+          </label>
+        </form>
+      </>
     );
   }
 }

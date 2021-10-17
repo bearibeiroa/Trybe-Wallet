@@ -1,7 +1,3 @@
-// Coloque aqui suas actions
-const LOGIN = (value) => ({
-  type: 'LOGIN',
-  value,
-});
+const LOGIN = (payload) => ({ type: 'LOGIN', payload });
 
 export default LOGIN;

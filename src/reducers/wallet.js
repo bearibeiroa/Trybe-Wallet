@@ -8,7 +8,7 @@ const WALLET = 'WALLET';
 const walletReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
   case WALLET:
-    return { ...state, [action.name]: action.value };
+    return { ...state, [action.name]: action.payload };
   default:
     return state;
   }
