@@ -1,7 +1,10 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import InputWallet from '../components/InputWallet';
 import SelectWallet from '../components/SelectWallet';
+import { fetchCurrency } from '../actions';
 
 class Wallet extends React.Component {
   constructor() {
@@ -9,6 +12,11 @@ class Wallet extends React.Component {
     this.state = {
       value: '',
     };
+  }
+
+  componentDidMount() {
+    const { dispatchWalletApi } = this.props;
+    dispatchWalletApi();
   }
 
   handleChange = ({ target }) => {
@@ -20,7 +28,8 @@ class Wallet extends React.Component {
 
   render() {
     const { value } = this.state;
-    const moedas = ['1'];
+    const { currencies } = this.props;
+    const filterCurrency = currencies.filter((item) => item !== 'USDT');
     const paymentMethod = ['Dinheiro', 'Cartão de crédito', 'Cartão de débito'];
     const tags = ['Alimentação', 'Lazer', 'Trabalho', 'Transporte', 'Saúde'];
     return (
@@ -45,7 +54,7 @@ class Wallet extends React.Component {
         <SelectWallet
           label="moeda"
           Legenda="Moeda"
-          array={ moedas }
+          array={ filterCurrency }
         />
         <SelectWallet
           label="metodo"
@@ -63,4 +72,20 @@ class Wallet extends React.Component {
   }
 }
 
-export default Wallet;
+Wallet.propTypes = {
+  dispatchWalletApi: PropTypes.func.isRequired,
+  currencies: PropTypes.arrayOf(PropTypes.any).isRequired,
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  dispatchWalletApi: () => dispatch(fetchCurrency()),
+}
+);
+
+const mapStateToProps = ({ wallet }) => (
+  {
+    currencies: wallet.currencies,
+  }
+);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Wallet);
