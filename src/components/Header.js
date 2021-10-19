@@ -9,18 +9,18 @@ class Header extends React.Component {
       acc += Number(curr.value) * curr.exchangeRates[curr.currency].ask;
       return acc;
     }, 0);
-    return totalSum;
+    return totalSum.toFixed(2);
   }
 
   render() {
-    const { email, expenses } = this.props;
+    const { email } = this.props;
     return (
       <header>
         <span data-testid="email-field">{`Email:${email}`}</span>
         <span data-testid="total-field">
-          {`Despesas: ${this.totalSumExpenses(expenses)}`}
+          {`Despesas: R$ ${this.totalSumExpenses()}`}
         </span>
-        <span data-testid="header-currency-field">BRL</span>
+        <span data-testid="header-currency-field"> BRL</span>
       </header>
     );
   }
