@@ -7,6 +7,8 @@ import SelectWallet from '../components/SelectWallet';
 import { fetchCurrency, walletExpensesValue } from '../actions';
 
 class Wallet extends React.Component {
+  tag = 'Alimentação';
+
   constructor() {
     super();
     this.state = {
@@ -15,7 +17,7 @@ class Wallet extends React.Component {
       description: '',
       currency: 'USD',
       method: 'Dinheiro',
-      tag: 'Alimentação',
+      tag: this.tag,
     };
   }
 
@@ -44,7 +46,7 @@ class Wallet extends React.Component {
       description: '',
       currency: 'USD',
       method: 'Dinheiro',
-      tag: 'Alimentação',
+      tag: this.tag,
     });
   }
 
