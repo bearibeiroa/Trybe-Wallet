@@ -13,9 +13,9 @@ class Wallet extends React.Component {
       id: 0,
       value: '',
       description: '',
-      currency: '',
-      method: '',
-      tag: '',
+      currency: 'USD',
+      method: 'Dinheiro',
+      tag: 'Alimentação',
     };
   }
 
@@ -42,21 +42,21 @@ class Wallet extends React.Component {
     this.setState({
       value: '',
       description: '',
-      currency: '',
-      method: '',
-      tag: '',
+      currency: 'USD',
+      method: 'Dinheiro',
+      tag: 'Alimentação',
     });
   }
 
   render() {
     const { value, description, currency, method, tag } = this.state;
-    const { currencies, email } = this.props;
+    const { currencies, email, expenses } = this.props;
     const filterCurrency = currencies.filter((item) => item !== 'USDT');
     const paymentMethod = ['Dinheiro', 'Cartão de crédito', 'Cartão de débito'];
     const tags = ['Alimentação', 'Lazer', 'Trabalho', 'Transporte', 'Saúde'];
     return (
       <span>
-        <Header email={ email } />
+        <Header email={ email } expenses={ expenses } />
         <InputWallet
           label="Valor: "
           type="text"
@@ -103,6 +103,7 @@ class Wallet extends React.Component {
 Wallet.propTypes = {
   dispatchWalletApi: PropTypes.func.isRequired,
   currencies: PropTypes.arrayOf(PropTypes.any).isRequired,
+  expenses: PropTypes.arrayOf(PropTypes.any).isRequired,
   submitState: PropTypes.func.isRequired,
   email: PropTypes.string.isRequired,
 };
@@ -117,6 +118,7 @@ const mapStateToProps = ({ user, wallet }) => (
   {
     email: user.email,
     currencies: wallet.currencies,
+    expenses: wallet.expenses,
   }
 );
 
