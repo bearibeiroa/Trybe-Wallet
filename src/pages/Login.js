@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { userLogin } from '../actions';
 
+import '../Login.css';
+
 class Login extends React.Component {
   constructor() {
     super();
@@ -39,38 +41,39 @@ class Login extends React.Component {
   render() {
     const { email, password } = this.state;
     return (
-      <>
-        <h1>TrybeWallet</h1>
+      <fieldset className="main-login">
+        TrybeWallet
         <form>
           <label htmlFor="email">
-            Email:
             <input
+              placeholder="Email"
               type="email"
               name="email"
               value={ email }
               data-testid="email-input"
               onChange={ this.handleChange }
             />
-            <label htmlFor="password">
-              Senha:
-              <input
-                type="text"
-                name="password"
-                value={ password }
-                onChange={ this.handleChange }
-                data-testid="password-input"
-              />
-            </label>
-            <button
-              type="button"
-              disabled={ this.validateButton() }
-              onClick={ this.onSubmit }
-            >
-              Entrar
-            </button>
           </label>
+          <label htmlFor="password">
+            <input
+              placeholder="Senha"
+              type="text"
+              name="password"
+              value={ password }
+              onChange={ this.handleChange }
+              data-testid="password-input"
+            />
+          </label>
+          <button
+            className="login-btn"
+            type="button"
+            disabled={ this.validateButton() }
+            onClick={ this.onSubmit }
+          >
+            Entrar
+          </button>
         </form>
-      </>
+      </fieldset>
     );
   }
 }
