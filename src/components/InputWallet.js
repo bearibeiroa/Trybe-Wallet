@@ -3,17 +3,17 @@ import PropTypes from 'prop-types';
 
 class InputWallet extends Component {
   render() {
-    const { label, Legenda, name, value, onChange } = this.props;
+    const { label, type, name, value, id, onChange } = this.props;
     return (
       <form>
-        <label htmlFor={ label }>
-          {Legenda}
+        <label htmlFor={ id }>
+          {label}
           <input
-            id={ label }
-            type="text"
+            type={ type }
             name={ name }
             value={ value }
             onChange={ onChange }
+            id={ id }
           />
         </label>
       </form>
@@ -23,9 +23,10 @@ class InputWallet extends Component {
 
 InputWallet.propTypes = {
   label: PropTypes.string.isRequired,
-  Legenda: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
 };
 

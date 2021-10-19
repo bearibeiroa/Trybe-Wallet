@@ -4,13 +4,18 @@ import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import InputWallet from '../components/InputWallet';
 import SelectWallet from '../components/SelectWallet';
-import { fetchCurrency } from '../actions';
+import { fetchCurrency, walletExpensesValue } from '../actions';
 
 class Wallet extends React.Component {
   constructor() {
     super();
     this.state = {
+      id: 0,
       value: '',
+      description: '',
+      currency: '',
+      method: '',
+      tag: '',
     };
   }
 
@@ -21,53 +26,76 @@ class Wallet extends React.Component {
 
   handleChange = ({ target }) => {
     const { name, value } = target;
+    this.setState({ [name]: value });
+  }
+
+  handleClick = async (e) => {
+    e.preventDefault();
+    const { id, value, description, currency, method, tag } = this.state;
+    const { submitState } = this.props;
+
+    const getCurrenciesApi = await fetch('https://economia.awesomeapi.com.br/json/all');
+    const exchangeRates = await getCurrenciesApi.json();
+
+    this.setState((prevState) => ({ id: prevState.id + 1 }));
+    submitState({ value, description, exchangeRates, id, currency, method, tag });
     this.setState({
-      [name]: value,
+      value: '',
+      description: '',
+      currency: '',
+      method: '',
+      tag: '',
     });
   }
 
   render() {
-    const { value } = this.state;
-    const { currencies } = this.props;
+    const { value, description, currency, method, tag } = this.state;
+    const { currencies, email } = this.props;
     const filterCurrency = currencies.filter((item) => item !== 'USDT');
     const paymentMethod = ['Dinheiro', 'Cartão de crédito', 'Cartão de débito'];
     const tags = ['Alimentação', 'Lazer', 'Trabalho', 'Transporte', 'Saúde'];
     return (
-      <>
-        <Header />
+      <span>
+        <Header email={ email } />
         <InputWallet
-          label="valor"
-          Legenda="Valor"
+          label="Valor: "
           type="text"
-          name="Valor"
           value={ value }
+          name="value"
+          id="valor"
           onChange={ this.handleChange }
         />
         <InputWallet
-          label="description"
-          Legenda="Descrição"
+          label="Descrição: "
           type="text"
-          name="Valor"
-          value={ value }
+          name="description"
+          id="description"
+          value={ description }
           onChange={ this.handleChange }
         />
         <SelectWallet
-          label="moeda"
-          Legenda="Moeda"
-          array={ filterCurrency }
+          label="Moeda: "
+          id="currency"
+          value={ currency }
+          onChange={ this.handleChange }
+          options={ filterCurrency }
         />
         <SelectWallet
-          label="metodo"
-          Legenda="Método de pagamento"
-          array={ paymentMethod }
+          label="Método de pagamento: "
+          id="method"
+          value={ method }
+          onChange={ this.handleChange }
+          options={ paymentMethod }
         />
         <SelectWallet
-          label="tag"
-          Legenda="Tag"
-          array={ tags }
+          label="Tag: "
+          id="tag"
+          value={ tag }
+          onChange={ this.handleChange }
+          options={ tags }
         />
-      </>
-
+        <button type="button" onClick={ this.handleClick }>Adicionar Despesas</button>
+      </span>
     );
   }
 }
@@ -75,15 +103,19 @@ class Wallet extends React.Component {
 Wallet.propTypes = {
   dispatchWalletApi: PropTypes.func.isRequired,
   currencies: PropTypes.arrayOf(PropTypes.any).isRequired,
+  submitState: PropTypes.func.isRequired,
+  email: PropTypes.string.isRequired,
 };
 
 const mapDispatchToProps = (dispatch) => ({
   dispatchWalletApi: () => dispatch(fetchCurrency()),
+  submitState: (expenses) => dispatch(walletExpensesValue(expenses)),
 }
 );
 
-const mapStateToProps = ({ wallet }) => (
+const mapStateToProps = ({ user, wallet }) => (
   {
+    email: user.email,
     currencies: wallet.currencies,
   }
 );

@@ -20,7 +20,6 @@ Header.propTypes = PropTypes.objectOf(PropTypes.string).isRequired;
 const mapStateToProps = ({ user, wallet }) => (
   {
     email: user.email,
-    currencies: wallet.currencies,
     expenses: wallet.expenses,
   }
 );
