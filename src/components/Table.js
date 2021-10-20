@@ -16,7 +16,7 @@ class Table extends Component {
       <section className="section-table-wallet">
         <TableHead />
         <table className="table-info-wallet">
-          <tbody>
+          <tbody className="table-info-wallet">
             { expenses.map((item) => {
               const {
                 id, description, tag, method, value, currency, exchangeRates,
@@ -33,16 +33,23 @@ class Table extends Component {
                   <td>{ exchangeRateInfo.toFixed(2) }</td>
                   <td>{ exchangeValue.toFixed(2) }</td>
                   <td>Real</td>
-                  <td className="table-btn-wallet">
-                    <button type="button">Editar</button>
+                  <span className="table-btn-wallet">
                     <button
+                      className="edit-btn"
+                      type="button"
+                      data-testid="edit-btn"
+                    >
+                      Editar
+                    </button>
+                    <button
+                      className="delete-btn"
                       type="button"
                       data-testid="delete-btn"
                       onClick={ () => this.handleClick(id) }
                     >
                       Excluir
                     </button>
-                  </td>
+                  </span>
                 </tr>
               );
             })}
