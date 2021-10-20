@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import Logo from '../Logo_wallet.png';
 
 class Header extends React.Component {
   totalSumExpenses() {
@@ -16,7 +17,7 @@ class Header extends React.Component {
     const { email } = this.props;
     return (
       <header className="header-wallet">
-        <h1>TrybeWallet</h1>
+        <img src={ Logo } alt="TrybeWallet" width="200" />
         <section className="info-header-wallet">
           <p data-testid="email-field">{`Email:${email}`}</p>
           <section className="expense-header-wallet">

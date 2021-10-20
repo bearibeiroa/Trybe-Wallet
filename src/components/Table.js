@@ -33,7 +33,7 @@ class Table extends Component {
                   <td>{ exchangeRateInfo.toFixed(2) }</td>
                   <td>{ exchangeValue.toFixed(2) }</td>
                   <td>Real</td>
-                  <span className="table-btn-wallet">
+                  <td className="table-btn-wallet">
                     <button
                       className="edit-btn"
                       type="button"
@@ -49,7 +49,7 @@ class Table extends Component {
                     >
                       Excluir
                     </button>
-                  </span>
+                  </td>
                 </tr>
               );
             })}
