@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 class TableHead extends Component {
   render() {
     return (
-      <table>
+      <table className="table-head-wallet">
         <thead>
           <tr>
             <th>Descrição</th>

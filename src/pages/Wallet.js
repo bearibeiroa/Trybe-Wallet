@@ -6,11 +6,11 @@ import InsertForm from '../components/InsertForm';
 class Wallet extends React.Component {
   render() {
     return (
-      <span>
+      <main>
         <Header />
         <InsertForm />
         <Table />
-      </span>
+      </main>
     );
   }
 }

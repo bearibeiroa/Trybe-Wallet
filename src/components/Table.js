@@ -7,9 +7,9 @@ class Table extends Component {
   render() {
     const { expenses } = this.props;
     return (
-      <>
+      <section className="section-table-wallet">
         <TableHead />
-        <table>
+        <table className="table-info-wallet">
           <tbody>
             { expenses.map((item) => {
               const {
@@ -18,7 +18,7 @@ class Table extends Component {
               const exchangeRateInfo = Number(exchangeRates[currency].ask);
               const exchangeValue = Number(value) * exchangeRateInfo;
               return (
-                <tr key={ id }>
+                <tr key={ id } className="table-info-wallet">
                   <td>{ description }</td>
                   <td>{ tag }</td>
                   <td>{ method }</td>
@@ -27,7 +27,7 @@ class Table extends Component {
                   <td>{ exchangeRateInfo.toFixed(2) }</td>
                   <td>{ exchangeValue.toFixed(2) }</td>
                   <td>Real</td>
-                  <td>
+                  <td className="table-btn-wallet">
                     <button type="button">Editar</button>
                     <button type="button">Excluir</button>
                   </td>
@@ -36,7 +36,7 @@ class Table extends Component {
             })}
           </tbody>
         </table>
-      </>
+      </section>
     );
   }
 }

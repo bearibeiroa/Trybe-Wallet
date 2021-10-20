@@ -5,7 +5,7 @@ class SelectWallet extends Component {
   render() {
     const { options, label, id, value, onChange } = this.props;
     return (
-      <form>
+      <form className="input-info">
         <label htmlFor={ id }>
           { label }
           <select

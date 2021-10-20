@@ -56,7 +56,7 @@ class InsertForm extends Component {
     const paymentMethod = ['Dinheiro', 'Cartão de crédito', 'Cartão de débito'];
     const tags = ['Alimentação', 'Lazer', 'Trabalho', 'Transporte', 'Saúde'];
     return (
-      <span>
+      <span className="input-info-wallet">
         <InputWallet
           label="Valor: "
           type="text"

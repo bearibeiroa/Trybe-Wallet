@@ -4,8 +4,6 @@ import { connect } from 'react-redux';
 import { userLogin } from '../actions';
 import PhoneLogin from '../phone_login_img.png';
 
-import '../Login.css';
-
 class Login extends React.Component {
   constructor() {
     super();
@@ -46,9 +44,10 @@ class Login extends React.Component {
         <section className="form-login-section">
           <h1>Trybe</h1>
           <h2>Wallet</h2>
-          <form>
+          <form className="form-login-section">
             <label htmlFor="email">
               <input
+                className="form-login"
                 placeholder="Email"
                 type="email"
                 name="email"
@@ -59,6 +58,7 @@ class Login extends React.Component {
             </label>
             <label htmlFor="password">
               <input
+                className="form-login"
                 placeholder="Senha"
                 type="text"
                 name="password"

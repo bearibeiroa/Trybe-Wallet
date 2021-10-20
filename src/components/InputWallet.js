@@ -5,7 +5,7 @@ class InputWallet extends Component {
   render() {
     const { label, type, name, value, id, onChange } = this.props;
     return (
-      <form>
+      <form className="input-info">
         <label htmlFor={ id }>
           {label}
           <input

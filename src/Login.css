@@ -3,23 +3,17 @@
   padding: 0;
 }
 
-body {
+.main-login {
+  align-items: center;
   background: radial-gradient(white, rgba(204, 175, 252, 1) 37%, rgba(252, 96, 96, 1));
   background-attachment: fixed;
   background-repeat: no-repeat;
-  margin: auto;
-  text-align: center;
-  width: 100vh;
-}
-
-.image-phone-login {
-  margin-right: 30%;
-}
-
-.main-login {
-  align-items: center;
   display: flex;
   height: 100vh;
+  justify-content: center;
+  margin: auto;
+  text-align: center;
+  width: 100%;
 }
 
 .form-login-section {
@@ -42,17 +36,15 @@ h2 {
   font-weight: 200;
 }
 
-
 form {
   align-items: center;
   display: flex;
   flex-direction: column;
   margin: auto;
   padding: 30px;
-  width: 50%;
 }
 
-input {
+.form-login {
   border: 1px solid rgb(214, 213, 213);
   border-radius: 3px;
   height: 30px;
