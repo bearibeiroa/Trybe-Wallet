@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Container = styled.header `
+const Container = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -18,6 +18,17 @@ const Container = styled.header `
     margin-right: 1.5rem;
     font-weight: 500;
   }
+
+  @media 
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px) {
+  flex-direction: column;
+  width: auto;
+  ul {
+    display: flex;
+    flex-direction: column;
+  }
+}
 `;
 
 export default Container;

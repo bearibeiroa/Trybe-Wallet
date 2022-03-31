@@ -6,14 +6,14 @@ class InputForm extends Component {
     const { label, type, name, value, id, onChange } = this.props;
     return (
       <label htmlFor={ id }>
-          {label}
-          <input
-            type={ type }
-            name={ name }
-            value={ value }
-            onChange={ onChange }
-            id={ id }
-          />
+        {label}
+        <input
+          type={ type }
+          name={ name }
+          value={ value }
+          onChange={ onChange }
+          id={ id }
+        />
       </label>
     );
   }

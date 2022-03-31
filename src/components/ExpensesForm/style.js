@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Container = styled.form `
+const Container = styled.form`
   background: var(--bg-header);
   width: 100%;
   padding: 0.7rem;

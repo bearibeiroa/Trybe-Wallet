@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
-const GlobalStyle = createGlobalStyle `
+const GlobalStyle = createGlobalStyle`
 :root {
   --shape: #F0F2F5;
   --bg-header: #262B33;
@@ -50,6 +50,10 @@ button {
   [disabled] {
     opacity: 0.6;
     cursor: not-allowed;
+  }
+
+  table thead {
+    overflow: auto;
   }
 `;
 

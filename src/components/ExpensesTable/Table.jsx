@@ -12,47 +12,48 @@ class Table extends Component {
   handleClick = (id) => {
     const { removeExpense } = this.props;
     removeExpense(id);
-  }
+  };
 
   render() {
     const { expenses } = this.props;
     return (
       <Container>
-            <TableHead />
-          <tbody>
-            { expenses.map((item) => {
-              const {
-                id, description, tag, method, value, currency, exchangeRates,
-              } = item;
-              const exchangeRateInfo = Number(exchangeRates[currency].ask);
-              const exchangeValue = Number(value) * exchangeRateInfo;
-              return (
-                <tr key={ id } >
-                  <td>{ description }</td>
-                  <td>{ tag }</td>
-                  <td>{ method }</td>
-                  <td>{ value }</td>
-                  <td>{ exchangeRates[currency].name }</td>
-                  <td>{ exchangeRateInfo.toFixed(2) }</td>
-                  <td>{ exchangeValue.toFixed(2) }</td>
-                  <td>Real</td>
-                  <td>
-                    <button
-                      type="button"
-                    >
-                      <img src={ editIcon } alt="Editar" />
-                    </button>
-                    <button
-                      type="button"
-                      onClick={ () => this.handleClick(id) }
-                    >
-                      <img src={ trashIcon } alt="Editar" />
-                    </button>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
+        <TableHead />
+        <tbody>
+          {expenses.map((item) => {
+            const {
+              id,
+              description,
+              tag,
+              method,
+              value,
+              currency,
+              exchangeRates,
+            } = item;
+            const exchangeRateInfo = Number(exchangeRates[currency].ask);
+            const exchangeValue = Number(value) * exchangeRateInfo;
+            return (
+              <tr key={ id }>
+                <td>{description}</td>
+                <td>{tag}</td>
+                <td>{method}</td>
+                <td>{value}</td>
+                <td>{exchangeRates[currency].name}</td>
+                <td>{exchangeRateInfo.toFixed(2)}</td>
+                <td>{exchangeValue.toFixed(2)}</td>
+                <td>Real</td>
+                <td>
+                  <button type="button">
+                    <img src={ editIcon } alt="Editar" />
+                  </button>
+                  <button type="button" onClick={ () => this.handleClick(id) }>
+                    <img src={ trashIcon } alt="Editar" />
+                  </button>
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
       </Container>
     );
   }

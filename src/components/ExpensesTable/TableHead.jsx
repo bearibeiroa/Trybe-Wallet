@@ -3,14 +3,24 @@ import { connect } from 'react-redux';
 
 class TableHead extends Component {
   render() {
-    const headItems = ['Descrição', 'Tag', 'Método de pagamento', 'Valor', 'Moeda', 'Câmbio utilizado', 'Valor convertido', 'Moeda de conversão', 'Editar/Excluir']
+    const headItems = [
+      'Descrição',
+      'Tag',
+      'Método de pagamento',
+      'Valor',
+      'Moeda',
+      'Câmbio utilizado',
+      'Valor convertido',
+      'Moeda de conversão',
+      'Editar/Excluir',
+    ];
     return (
       <thead>
         <tr>
-          {headItems.map((item, index) => <th key={index}>{item}</th>)}
+          {headItems.map((item, index) => <th key={ index }>{item}</th>)}
         </tr>
       </thead>
-    )
+    );
   }
 }
 

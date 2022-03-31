@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import logoImg from '../../assets/logo.svg';
 import Container from './style';
 
@@ -20,11 +20,14 @@ class HeaderWallet extends React.Component {
     return (
       <Container>
         <Link to="/carteira">
-          <img src={logoImg} alt="TrybeWallet" width="200"/>
+          <img src={ logoImg } alt="TrybeWallet" width="200" />
         </Link>
         <ul>
           <li>{`Email:${email}`}</li>
-          <li>{`Despesas: R$ ${this.totalSumExpenses()}`}BRL</li>
+          <li>
+            {`Despesas: R$ ${this.totalSumExpenses()}`}
+            BRL
+          </li>
         </ul>
       </Container>
     );
