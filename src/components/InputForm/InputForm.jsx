@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-class InputWallet extends Component {
+class InputForm extends Component {
   render() {
     const { label, type, name, value, id, onChange } = this.props;
     return (
-      <form className="input-info">
-        <label htmlFor={ id }>
+      <label htmlFor={ id }>
           {label}
           <input
             type={ type }
@@ -15,13 +14,12 @@ class InputWallet extends Component {
             onChange={ onChange }
             id={ id }
           />
-        </label>
-      </form>
+      </label>
     );
   }
 }
 
-InputWallet.propTypes = {
+InputForm.propTypes = {
   label: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
@@ -30,4 +28,4 @@ InputWallet.propTypes = {
   onChange: PropTypes.func.isRequired,
 };
 
-export default InputWallet;
+export default InputForm;

@@ -1,8 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
+import logoImg from '../../assets/logo.svg';
+
 import { connect } from 'react-redux';
-import { userLogin } from '../actions';
-import PhoneLogin from '../phone_login_img.png';
+import { userLogin } from '../../config/actions/index';
+
+import Container from './styles';
 
 class Login extends React.Component {
   constructor() {
@@ -40,47 +44,34 @@ class Login extends React.Component {
   render() {
     const { email, password } = this.state;
     return (
-      <main className="main-login">
-        <section className="form-login-section">
-          <h1>Trybe</h1>
-          <h2>Wallet</h2>
-          <form className="form-login-section">
-            <label htmlFor="email">
-              <input
-                className="form-login"
-                placeholder="Email"
-                type="email"
-                name="email"
-                value={ email }
-                data-testid="email-input"
-                onChange={ this.handleChange }
-              />
-            </label>
-            <label htmlFor="password">
-              <input
-                className="form-login"
-                placeholder="Senha"
-                type="text"
-                name="password"
-                value={ password }
-                onChange={ this.handleChange }
-                data-testid="password-input"
-              />
-            </label>
-            <button
-              className="login-btn"
-              type="button"
-              disabled={ this.validateButton() }
-              onClick={ this.onSubmit }
-            >
-              Entrar
-            </button>
-          </form>
-        </section>
-        <aside className="image-phone-login">
-          <img src={ PhoneLogin } alt="TrybeWallet" width="500" />
-        </aside>
-      </main>
+      <Container>
+        <img src={ logoImg } alt="Logo TrybeWallet" />
+        <label htmlFor="email">
+          <input
+            placeholder="Email"
+            type="email"
+            name="email"
+            value={ email }
+            onChange={ this.handleChange }
+          />
+        </label>
+        <label htmlFor="password">
+          <input
+            placeholder="Senha"
+            type="password"
+            name="password"
+            value={ password }
+            onChange={ this.handleChange }
+          />
+        </label>
+        <button
+          type="button"
+          disabled={ this.validateButton() }
+          onClick={ this.onSubmit }
+        >
+          Entrar
+        </button>
+      </Container>
     );
   }
 }

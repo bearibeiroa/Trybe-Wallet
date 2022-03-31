@@ -2,7 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import TableHead from './TableHead';
-import { deleteExpense } from '../actions';
+import { deleteExpense } from '../../config/actions/index';
+import Container from './style';
+
+import editIcon from '../../assets/editIcon.svg';
+import trashIcon from '../../assets/trashIcon.svg';
 
 class Table extends Component {
   handleClick = (id) => {
@@ -13,10 +17,9 @@ class Table extends Component {
   render() {
     const { expenses } = this.props;
     return (
-      <section className="section-table-wallet">
-        <TableHead />
-        <table className="table-info-wallet">
-          <tbody className="table-info-wallet">
+      <Container>
+            <TableHead />
+          <tbody>
             { expenses.map((item) => {
               const {
                 id, description, tag, method, value, currency, exchangeRates,
@@ -24,7 +27,7 @@ class Table extends Component {
               const exchangeRateInfo = Number(exchangeRates[currency].ask);
               const exchangeValue = Number(value) * exchangeRateInfo;
               return (
-                <tr key={ id } className="table-info-wallet">
+                <tr key={ id } >
                   <td>{ description }</td>
                   <td>{ tag }</td>
                   <td>{ method }</td>
@@ -33,29 +36,24 @@ class Table extends Component {
                   <td>{ exchangeRateInfo.toFixed(2) }</td>
                   <td>{ exchangeValue.toFixed(2) }</td>
                   <td>Real</td>
-                  <td className="table-btn-wallet">
+                  <td>
                     <button
-                      className="edit-btn"
                       type="button"
-                      data-testid="edit-btn"
                     >
-                      Editar
+                      <img src={ editIcon } alt="Editar" />
                     </button>
                     <button
-                      className="delete-btn"
                       type="button"
-                      data-testid="delete-btn"
                       onClick={ () => this.handleClick(id) }
                     >
-                      Excluir
+                      <img src={ trashIcon } alt="Editar" />
                     </button>
                   </td>
                 </tr>
               );
             })}
           </tbody>
-        </table>
-      </section>
+      </Container>
     );
   }
 }

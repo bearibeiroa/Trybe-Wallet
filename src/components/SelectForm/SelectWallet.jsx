@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-class SelectWallet extends Component {
+class SelectForm extends Component {
   render() {
     const { options, label, id, value, onChange } = this.props;
     return (
-      <form className="input-info">
         <label htmlFor={ id }>
           { label }
           <select
@@ -21,12 +20,11 @@ class SelectWallet extends Component {
             )) }
           </select>
         </label>
-      </form>
     );
   }
 }
 
-SelectWallet.propTypes = {
+SelectForm.propTypes = {
   label: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
@@ -34,4 +32,4 @@ SelectWallet.propTypes = {
   options: PropTypes.arrayOf(PropTypes.any).isRequired,
 };
 
-export default SelectWallet;
+export default SelectForm;

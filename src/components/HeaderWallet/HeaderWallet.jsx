@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Logo from '../Logo_wallet.png';
+import { Link } from 'react-router-dom'
+import logoImg from '../../assets/logo.svg';
+import Container from './style';
 
-class Header extends React.Component {
+class HeaderWallet extends React.Component {
   totalSumExpenses() {
     const { expenses } = this.props;
     const totalSum = expenses.reduce((acc, curr) => {
@@ -16,23 +18,20 @@ class Header extends React.Component {
   render() {
     const { email } = this.props;
     return (
-      <header className="header-wallet">
-        <img src={ Logo } alt="TrybeWallet" width="200" />
-        <section className="info-header-wallet">
-          <p data-testid="email-field">{`Email:${email}`}</p>
-          <section className="expense-header-wallet">
-            <p data-testid="total-field">
-              {`Despesas: R$ ${this.totalSumExpenses()}`}
-            </p>
-            <p data-testid="header-currency-field"> BRL</p>
-          </section>
-        </section>
-      </header>
+      <Container>
+        <Link to="/carteira">
+          <img src={logoImg} alt="TrybeWallet" width="200"/>
+        </Link>
+        <ul>
+          <li>{`Email:${email}`}</li>
+          <li>{`Despesas: R$ ${this.totalSumExpenses()}`}BRL</li>
+        </ul>
+      </Container>
     );
   }
 }
 
-Header.propTypes = {
+HeaderWallet.propTypes = {
   email: PropTypes.string.isRequired,
   expenses: PropTypes.arrayOf(PropTypes.any).isRequired,
 };
@@ -45,4 +44,4 @@ const mapStateToProps = ({ user, wallet }) => (
   }
 );
 
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps)(HeaderWallet);

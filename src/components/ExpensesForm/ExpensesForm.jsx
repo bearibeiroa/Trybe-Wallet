@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { fetchCurrency, walletExpensesValue } from '../actions';
-import InputWallet from './InputWallet';
-import SelectWallet from './SelectWallet';
+import { fetchCurrency, walletExpensesValue } from '../../config/actions/index';
+import InputForm from '../InputForm/InputForm';
+import SelectForm from '../SelectForm/SelectWallet';
 
-class InsertForm extends Component {
+import Container from './style';
+
+class ExpensesForm extends Component {
   tag = 'Alimentação';
 
   constructor() {
@@ -56,8 +58,8 @@ class InsertForm extends Component {
     const paymentMethod = ['Dinheiro', 'Cartão de crédito', 'Cartão de débito'];
     const tags = ['Alimentação', 'Lazer', 'Trabalho', 'Transporte', 'Saúde'];
     return (
-      <span className="input-info-wallet">
-        <InputWallet
+      <Container>
+        <InputForm
           label="Valor: "
           type="text"
           value={ value }
@@ -65,7 +67,7 @@ class InsertForm extends Component {
           id="valor"
           onChange={ this.handleChange }
         />
-        <InputWallet
+        <InputForm
           label="Descrição: "
           type="text"
           name="description"
@@ -73,21 +75,21 @@ class InsertForm extends Component {
           value={ description }
           onChange={ this.handleChange }
         />
-        <SelectWallet
+        <SelectForm
           label="Moeda: "
           id="currency"
           value={ currency }
           onChange={ this.handleChange }
           options={ filterCurrency }
         />
-        <SelectWallet
+        <SelectForm
           label="Método de pagamento: "
           id="method"
           value={ method }
           onChange={ this.handleChange }
           options={ paymentMethod }
         />
-        <SelectWallet
+        <SelectForm
           label="Tag: "
           id="tag"
           value={ tag }
@@ -95,12 +97,12 @@ class InsertForm extends Component {
           options={ tags }
         />
         <button type="button" onClick={ this.handleClick }>Adicionar Despesas</button>
-      </span>
+      </Container>
     );
   }
 }
 
-InsertForm.propTypes = {
+ExpensesForm.propTypes = {
   dispatchWalletApi: PropTypes.func.isRequired,
   currencies: PropTypes.arrayOf(PropTypes.any).isRequired,
   submitState: PropTypes.func.isRequired,
@@ -120,4 +122,4 @@ const mapStateToProps = ({ user, wallet }) => (
   }
 );
 
-export default connect(mapStateToProps, mapDispatchToProps)(InsertForm);
+export default connect(mapStateToProps, mapDispatchToProps)(ExpensesForm);
