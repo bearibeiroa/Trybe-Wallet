@@ -5,7 +5,6 @@ import TableHead from './TableHead';
 import { deleteExpense } from '../../config/actions/index';
 import Container from './style';
 
-import editIcon from '../../assets/editIcon.svg';
 import trashIcon from '../../assets/trashIcon.svg';
 
 class Table extends Component {
@@ -43,11 +42,8 @@ class Table extends Component {
                 <td>{exchangeValue.toFixed(2)}</td>
                 <td>Real</td>
                 <td>
-                  <button type="button">
-                    <img src={ editIcon } alt="Editar" />
-                  </button>
                   <button type="button" onClick={ () => this.handleClick(id) }>
-                    <img src={ trashIcon } alt="Editar" />
+                    <img src={ trashIcon } alt="Excluir" />
                   </button>
                 </td>
               </tr>

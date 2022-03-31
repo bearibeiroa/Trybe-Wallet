@@ -12,7 +12,7 @@ class TableHead extends Component {
       'Câmbio utilizado',
       'Valor convertido',
       'Moeda de conversão',
-      'Editar/Excluir',
+      'Excluir',
     ];
     return (
       <thead>
