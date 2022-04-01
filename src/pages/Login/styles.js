@@ -32,9 +32,11 @@ const Container = styled.form`
       border: 1px solid #d7d7d7;
       background: #F7F7F7;
       font-weight: 400;
-      font-size: 1rem;
+      font-size: 0.9rem;
       &::placeholder {
         color: var(--text-body);
+        font-size: 0.9rem;
+        
       }
       & + input {
         margin-top: 1rem;
