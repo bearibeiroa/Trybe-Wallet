@@ -45,6 +45,7 @@ class Login extends React.Component {
         <img src={ logoImg } alt="Logo TrybeWallet" />
         <label htmlFor="email">
           <input
+            data-testid="email-input"
             placeholder="Digite o seu e-mail"
             type="email"
             name="email"
@@ -54,6 +55,7 @@ class Login extends React.Component {
         </label>
         <label htmlFor="password">
           <input
+            data-testid="password-input"
             placeholder="Digite sua senha com mínimo de 6 caracteres"
             type="password"
             name="password"

@@ -1,9 +1,11 @@
 import { defineState } from 'redux-localstore';
 import { LOGIN_USER_VALUE } from '../actions';
 
-const DEFAULT_STATE = {
+const INITIAL_STATE = {
   email: '',
 };
+
+// This reducer is responsible for handling the user information
 
 const userReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
@@ -14,6 +16,6 @@ const userReducer = (state = INITIAL_STATE, action) => {
   }
 };
 
-const INITIAL_STATE = defineState(DEFAULT_STATE)(userReducer);
+defineState(INITIAL_STATE)(userReducer);
 
 export default userReducer;

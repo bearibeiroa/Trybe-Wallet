@@ -1,10 +1,11 @@
-// Esse reducer será responsável por tratar o todas as informações relacionadas as despesas
 import { WALLET_VALUE, WALLET_EXPENSES_VALUE, DELETE_EXPENSE } from '../actions';
 
 const INITIAL_STATE = {
   currencies: [],
   expenses: [],
 };
+
+// This reducer is responsible for handling all expense-related information
 
 const walletReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
